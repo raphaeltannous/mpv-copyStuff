@@ -2,12 +2,12 @@ require 'mp'
 require 'mp.msg'
 
 -- Copy:
--- Filename or URL
--- Full Filename Path
--- Current Video Time
--- Current Video Duration
--- Current Displayed Subtitle
--- Video Metadata
+-- Filename or URL              (CTRL+f)
+-- Full Filename Path           (CTRL+p)
+-- Current Video Time           (CTRL+t)
+-- Current Video Duration       (CTRL+d)
+-- Current Displayed Subtitle   (CTRL+s)
+-- Video Metadata               (CTRL+m)
 
 WINDOWS = 2
 UNIX = 3
