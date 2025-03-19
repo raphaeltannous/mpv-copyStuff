@@ -5,6 +5,7 @@ This script copies to clipboard the:
 - Full Filename Path
 - Current Video Time (HH:MM:SS.MS)
 - Current Displayed Subtitle Text
+- Video Title
 - Video Metadata
 
 ## Installation
@@ -31,6 +32,7 @@ To work, the script needs:
 | **Current Displayed Subtitle Text**  | **CTRL+s** |
 | **Video Duration**                   | **CTRL+d** |
 | **Video Metadata**                   | **CTRL+m** |
+| **Video Title**                      | **CTRL+T** |
 
 </div>
 

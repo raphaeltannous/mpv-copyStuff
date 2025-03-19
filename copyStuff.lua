@@ -4,6 +4,7 @@ require 'mp.msg'
 -- Copy:
 -- Filename or URL              (CTRL+f)
 -- Full Filename Path           (CTRL+p)
+-- Video Title                  (CTRL+T)
 -- Current Video Time           (CTRL+t)
 -- Current Video Duration       (CTRL+d)
 -- Current Displayed Subtitle   (CTRL+s)
@@ -73,6 +74,17 @@ local function copyTime()
         mp.osd_message(string.format("Time Copied to Clipboard: %s", time))
     else
         mp.osd_message("Failed to copy time to clipboard")
+    end
+end
+
+
+-- Copy Title
+local function copyTitle()
+    local title = string.format("%s", mp.get_property_osd("media-title"))
+    if set_clipboard(title) then
+        mp.osd_message(string.format("Title Copied to Clipboard: %s", title))
+    else
+        mp.osd_message("Failed to copy title to clipboard")
     end
 end
 
@@ -159,6 +171,7 @@ end
 
 -- Key-Bindings
 mp.add_key_binding("Ctrl+t", "copyTime", copyTime)
+mp.add_key_binding("Ctrl+T", "copyTitle", copyTitle)
 mp.add_key_binding("Ctrl+f", "copyFilename", copyFilename)
 mp.add_key_binding("Ctrl+p", "copyFullPath", copyFullPath)
 mp.add_key_binding("Ctrl+s", "copySubtitle", copySubtitle)
