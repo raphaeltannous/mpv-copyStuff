@@ -30,6 +30,24 @@ local function command_exists(cmd)
 end
 
 local function get_clipboard_cmd()
+    -- attempt to decide by current session's type
+    -- The environment variable is not a Freedesktop standard, but a Systemd one. For possible values see `man 8 pam_systemd`
+    local session_type = os.getenv("XDG_SESSION_TYPE")
+    if session_type == "wayland" then
+        if command_exists("wl-copy") then
+            return "wl-copy"
+        else
+            mp.msg.error("MPV is running in a wayland environment, but suitable command was not found")
+        end
+    elseif session_type == "x11" then
+        if command_exists("xclip") then
+            return "xclip -silent -in -selection clipboard"
+        else
+            mp.msg.error("MPV is running in an X11 environment, but suitable command was not found")
+        end
+    end
+
+    -- fallback to whatever is available
     if command_exists("xclip") then
         return "xclip -silent -in -selection clipboard"
     elseif command_exists("wl-copy") then
